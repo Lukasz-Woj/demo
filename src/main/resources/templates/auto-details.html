@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" th:href="@{/vendor/detailCSS.css}" />
+
+</head>
+<body>
+    <nav class="site-nav">
+        <button class="site-nav-button">Menu</button>
+        <div class="site-menu">
+            <ul>
+                <li>
+                    <a th:href="@{/}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/wszystkie}">
+                        Wszystkie
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/obserwowane}">
+                        Obserwowane
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/kategorie}">
+                        Kategorie
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="car.detail">
+        <div class="img-div">
+            <img  class="car-image" th:src="${auto.getUrl()}">
+        </div>
+        <div>
+            <div class="tabela-car-container">
+                <table class="tabela-car">
+                    <tr>
+                        <td th:text="'Model: ' + ${auto.name}"></td>
+                        <td th:text="'Marka: ' + ${auto.marka}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Silnik: ' + ${auto.silnik}"></td>
+                        <td th:text="'Rodzaj paliwa: ' + ${auto.rodzajPaliwa}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Przebieg: ' + ${auto.przebieg}"></td>
+                        <td th:text="'Rocznik: ' + ${auto.rocznik}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Stan: ' + ${auto.czyUzywany}"></td>
+                        <td th:text="'Cena: ' + ${auto.cena}"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" th:text="${auto.dodatkoweInformacje}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <form th:action="@{/auto/{name}(name=${auto.name})}" th:object="${auto}" method="post">
+            <input type="text" th:field="*{id}" class="" readonly>
+            <div class="col s8 l3">
+                <input type="text" th:field="*{dodatkoweInformacje}" style="text-align: center;">
+            </div>
+            <div class="col s4 l1">
+                <input type="submit" value="Change" style="margin: 15px;">
+            </div>
+        </form>
+        <div class="search-bar container">
+            <div class="row">
+                <div class="col col-12">
+                    <form action="#" method="get">
+                        <div class="input-field">
+                            <button name="q" type="submit" th:value="${auto.id}" required="required" >blagamdzialaj</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="comments-container">
+            <div th:each="comment : ${comments}">
+                <table>
+                    <tr>
+                        <td th:text="${comment.userName}"></td>
+                        <td th:text="${comment.tekst}"></td>
+                        <td>Usuń</td>
+                        <td>Edytuj</td>
+                </table>
+            </div>
+            <div>
+                <form th:action="@{/auto/{name}/createComment(name=${auto.getName()}}" th:object="${comment}" method="post">
+                    <input th:field="*{userName}">
+                    <div class="input-field col s12">
+
+                    </div>
+                    <div class="">
+                        <input class="btn btn-warning" type="submit" value="Change" style="position: absolute; bottom: 2px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

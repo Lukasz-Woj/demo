@@ -1,0 +1,69 @@
+.option-bar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.option-bar a{
+    font-size: medium;
+}
+
+.input-field{
+    height: 4px;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+}
+
+.autka-container{
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1210px;
+}
+
+.autka{
+    float:left;
+    margin-left: 1px;
+    margin-right: 1px;
+    position: relative;
+}
+
+.autka-info{
+    position: absolute;
+    height: 150px;
+    width: 300px;
+    z-index: 30;
+    background-color: #1523b5;
+
+}
+
+.autka-info-but{
+    display: block;
+    background-color: #3b4077;
+    color: white;
+    position: relative;
+    top:15px;
+
+}
+
+
+.autka-but{
+    position: absolute;
+    color: white;
+    border-radius: 6px;
+    background-color: #3b4077;
+    z-index: 50;
+}
+
+.najedz:hover .autka-info{
+    z-index: 45;
+}
+
+.wszystko-img{
+
+    height: 150px;
+    width: 300px;
+    position: relative;
+    z-index: 40;
+}

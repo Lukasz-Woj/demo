@@ -1,0 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+body{
+    margin: 0; !important;
+    padding: 0;
+    overflow: hidden;
+    background: #696e9e;
+}
+
+.site-nav{
+    height: 100px;
+    width: 100%;
+    background: #3b4077;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.site-nav-button{
+    border: 0;
+    border-radius: 5px;
+    background: #ffffff;
+}
+
+.site-menu{
+    z-index: 9999;
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    background: #3b4077;
+    transform: translateX(100%);
+    transition: 0.3s transform ease-in-out;
+}
+
+.site-menu ul{
+    padding: 0;
+    list-style-type: none;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.site-menu li{
+    background: #ffffff;
+    margin-top: 20px;
+    color: #696e9e;
+    border-radius: 5px;
+    flex-basis: 100%;
+    display:flex;
+    height: 30px;
+}
+
+.site-menu a{
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.site-menu a:hover{
+    background: #696e9e;
+    color: white;
+}
+
+.site-nav-button:focus ~ .site-menu, .site-menu:hover{
+    transform: translateX(0);
+}
+
+.favorite {
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    display: block;
+    height: 60px;
+    width: 60px;
+    z-index: 1500;
+    border-radius: 0 6px 0 0;
+    right: 0;
+}
+
+.mark.favorite {
+    background: url(/static/ikony/1.png) no-repeat 0 0;
+    /*background-color: red;*/
+}
+
+.unmark.favorite {
+    background: url(/static/ikony/2.png) no-repeat 0 0;
+    /*background-color: aqua;*/
+}

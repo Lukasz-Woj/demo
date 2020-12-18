@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{/vendor/materialize.css}"/>
+    <link rel="stylesheet" th:href="@{/vendor/absolut.css}"/>
+</head>
+<body>
+    <nav class="site-nav">
+        <button class="site-nav-button">Menu</button>
+        <div class="site-menu">
+            <ul>
+                <li>
+                    <a th:href="@{/}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/wszystkie}">
+                        Wszystkie
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/obserwowane}">
+                        Obserwowane
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/kategorie}">
+                        Kategorie
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="search-bar container">
+        <div class="row">
+            <div class="col col-12">
+                <form action="#" method="get">
+                    <div class="input-field">
+                        <input name="q" type="search" placeholder="Type name here..." required="required" autocomplete="off" />
+                        <i class="material-icons">search</i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="all-container">
+        <div class="autka-container">
+            <div class="autka" th:each="auto : ${allAuta}">
+                <a th:href="${auto.getDetailsUrl()}"><button class="autka-but" th:text="${auto.marka} + ' ' + ${auto.name}"></button></a>
+                <div class="najedz">
+                    <div class="autka-info">
+                        <p  class= "autka-info-but" th:text="'Cena: ' + ${auto.cena}"></p>
+                        <p class= "autka-info-but" th:text="'Silnik: ' + ${auto.silnik}"></p>
+                        <p class= "autka-info-but" th:text="'Rodzaj paliwa: ' + ${auto.rodzajPaliwa}"></p>
+                    </div>
+                    <img class="wszystko-img" th:src="${auto.getUrl()}">
+                    <a th:href="${auto.getDetailsUrl() + '/obserwowane'}" th:class="(${auto.czyObserwowany} ? 'un' : '') + 'mark favorite'"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

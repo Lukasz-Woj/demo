@@ -1,0 +1,166 @@
+body{
+    margin: 0; !important;
+    padding: 0;
+    overflow: hidden;
+    background: #696e9e;
+}
+
+.site-nav{
+    height: 100px;
+    width: 100%;
+    background: #3b4077;
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.site-nav-button{
+    border: 0;
+    border-radius: 5px;
+    background: #ffffff;
+}
+
+.site-menu{
+    z-index: 9999;
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    background: #3b4077;
+    transform: translateX(100%);
+    transition: 0.3s transform ease-in-out;
+}
+
+.site-menu ul{
+    padding: 0;
+    list-style-type: none;
+    margin: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.site-menu li{
+    background: #ffffff;
+    margin-top: 20px;
+    color: #696e9e;
+    border-radius: 5px;
+    flex-basis: 100%;
+    display:flex;
+    height: 30px;
+}
+
+.site-menu a{
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    align-items:center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.site-menu a:hover{
+    background: #696e9e;
+    color: white;
+}
+
+.site-nav-button:focus ~ .site-menu, .site-menu:hover{
+    transform: translateX(0);
+}
+
+.cars-container{
+    position:relative;
+    width: 1200px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background: white;
+    border-radius: 6px;
+}
+
+.oferta-dnia-container{
+    width: 500px;
+    height: 694px;
+    border: 3px solid #3b4077;
+    border-radius: 6px;
+    float: left;
+}
+
+.oferta-dnia-img{
+    height: 350px;
+    width: 500px;
+    border-radius: 6px;
+}
+
+.ofdBut{
+    border-radius: 5px;
+    background-color: #3b4077;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    z-index: 500;
+    top: 340px;
+
+}
+.ofdBut:hover{
+    background-color: #696e9e;
+    left: 3px;
+    top: 337px;
+}
+
+.oferta-dnia-info-container{
+    margin-left: 10px;
+    margin-top: 18px;
+}
+
+.ofdInfo{
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    background-color: #3b4077;
+    color: white;
+}
+
+.cars-menu-container{
+    float: left;
+    width: 694px;
+    height: 700px;
+    padding-top: 30px;
+    position: relative;
+}
+
+.naglowek-menu{
+    position: absolute;
+    font-size: 20px;
+    left: 280px;
+}
+
+.car-in-menu{
+    float: left;
+    margin: 20px;
+    position: relative;
+}
+
+.cimBut{
+    position: absolute;
+    font-size: 18px;
+    z-index: 500;
+    top: 140px;
+    right: 3px;
+}
+
+.auta_img{
+    height: 150px;
+    width: 300px;
+    border-radius: 6px;
+}
+
+

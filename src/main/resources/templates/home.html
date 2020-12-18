@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" th:href="@{/vendor/app.css}" />
+</head>
+<body>
+    <nav class="site-nav">
+        <button class="site-nav-button">Menu</button>
+        <div class="site-menu">
+            <ul>
+                <li>
+                    <a th:href="@{/}">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/wszystkie}">
+                        Wszystkie
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/obserwowane}">
+                        Obserwowane
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/kategorie}">
+                        Kategorie
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="cars-container">
+        <div class="oferta-dnia-container" th:each="auto : ${oferAuto}">
+            <a>
+                <a href="#kleks">
+                    <button class="ofdBut">Oferta dnia</button>
+                </a>
+                <img class="oferta-dnia-img" th:src="${auto.getUrl()}">
+            </a>
+            <div class="oferta-dnia-info-container">
+                <p class="ofdInfo" th:text="Model + ' ' + ${auto.name}"></p>
+                <p class="ofdInfo" th:text="Marka + ' ' + ${auto.marka}"></p>
+                <p class="ofdInfo" th:text="Cena + ' ' + ${auto.cena}"></p>
+            </div>
+        </div>
+        <div class="cars-menu-container" >
+            <a class="naglowek-menu">Inne nasze auta</a>
+            <div class="car-in-menu" th:each="auto: ${auta}">
+                <img class="auta_img" th:src="${auto.getUrl()}">
+                <button class="cimBut" th:text="${auto.marka} + ' ' + ${auto.name}"></button>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="cars container">
+        <div th:each="auto : ${auta}">
+            <a>
+                <img class="auta_img" th:src="${auto.getUrl()}">
+            </a>
+
+            <table border="1">
+                <tr>
+                    <td th:text="${auto.name}"></td>
+                    <td th:text="${auto.marka}"></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <table th:each="auto: ${auta}" border="1">
+            <tr>
+                <td th:text="${auto.name}"></td>
+                <td th:text="${auto.marka}"></td>
+            </tr>
+        </table>
+
+
+    </div> -->
+
+</body>
+</html>
