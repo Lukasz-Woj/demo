@@ -1,6 +1,6 @@
 
 .input-field{
-    height: 4px;
+    height: 0px;
     border-radius: 4px;
     background-color: white;
     color: black;
@@ -57,5 +57,19 @@
     width: 300px;
     position: relative;
     z-index: 40;
+}
+
+.favorite {
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    display: block;
+    height: 30px;
+    width: 30px;
+    z-index: 1500;
+    border-radius: 0 6px 0 0;
+    right: 0;
+    text-align: center;
+    font-size: medium;
 }
 

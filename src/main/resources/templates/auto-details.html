@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" th:href="@{/vendor/detailCSS.css}" />
+    <link rel="stylesheet" th:href="@{/vendor/absolut.css}" />
 
 </head>
 <body>
@@ -39,7 +40,10 @@
     </nav>
     <div class="car.detail">
         <div class="img-div">
-            <img  class="car-image" th:src="${auto.getUrl()}">
+            <div class="rel-div">
+                <img  class="car-image" th:src="${auto.getUrl()}">
+                <a th:href="${auto.getDetailsUrl() + '/obserwowane'}" th:class="(${auto.czyObserwowany} ? 'un' : '') + 'mark favorite'">💛</a>
+            </div>
         </div>
         <div>
             <div class="tabela-car-container">
@@ -57,7 +61,7 @@
                         <td th:text="'Rocznik: ' + ${auto.rocznik}"></td>
                     </tr>
                     <tr>
-                        <td th:text="'Stan: ' + ${auto.czyUzywany}"></td>
+                        <td th:text="'Stan: ' + ${auto.isCzyUzywany()}"></td>
                         <td th:text="'Cena: ' + ${auto.cena}"></td>
                     </tr>
                     <tr>
@@ -67,12 +71,12 @@
             </div>
         </div>
         <form th:action="@{/auto/{name}(name=${auto.name})}" th:object="${auto}" method="post">
-            <input type="text" th:field="*{id}" class="" readonly>
+            <input type="hidden" th:field="*{id}" class="" readonly>
             <div class="col s8 l3">
                 <input type="text" th:field="*{dodatkoweInformacje}" style="text-align: center;">
             </div>
             <div class="col s4 l1">
-                <input type="submit" value="Change" style="margin: 15px;">
+                <input type="submit" value="Change info" style="margin: 15px;">
             </div>
         </form>
         <div class="search-bar container">
@@ -80,7 +84,7 @@
                 <div class="col col-12">
                     <form action="#" method="get">
                         <div class="input-field">
-                            <button name="q" type="submit" th:value="${auto.id}" required="required" >blagamdzialaj</button>
+                            <button name="q" type="submit" th:value="${auto.id}" required="required" >Pokaż komentarze</button>
                         </div>
                     </form>
                 </div>
@@ -88,26 +92,29 @@
         </div>
     </div>
     <div>
+        <div>
+            <form th:action="@{/auto/{name}/createComment(name=${auto.getName()})}" th:object="${comment}" method="post">
+                <input type="text" th:field="*{userName}" placeholder="User name">
+                <input type="text" th:field="*{tekst}" placeholder="Type comment here">
+<!--                <input type="text" th:field="*{autoId}" th:value="${auto.id}">-->
+
+                <input class="btn btn-warning" type="submit" value="Add comment">
+            </form>
+        </div>
         <div class="comments-container">
             <div th:each="comment : ${comments}">
                 <table>
                     <tr>
                         <td th:text="${comment.userName}"></td>
                         <td th:text="${comment.tekst}"></td>
-                        <td>Usuń</td>
-                        <td>Edytuj</td>
-                </table>
-            </div>
-            <div>
-                <form th:action="@{/auto/{name}/createComment(name=${auto.getName()}}" th:object="${comment}" method="post">
-                    <input th:field="*{userName}">
-                    <div class="input-field col s12">
+                        <td>
+                            <form th:action="@{/auto/{name}/deleteComment(name=${auto.getName()})}"  method="get">
+                                <button name="q" type="submit" th:value="${comment.id}" required="required" >Delete comment</button>
+                            </form>
+                        </td>
 
-                    </div>
-                    <div class="">
-                        <input class="btn btn-warning" type="submit" value="Change" style="position: absolute; bottom: 2px;">
-                    </div>
-                </form>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

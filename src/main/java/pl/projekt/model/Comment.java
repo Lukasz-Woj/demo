@@ -6,6 +6,13 @@ public class Comment {
     private String tekst;
     private Long autoId;
 
+    public Comment() {
+    }
+
+    public Comment(Long id){
+        this.id = id;
+    }
+
     public Comment(Long id, String userName, String tekst, Long autoId) {
         this.id = id;
         this.userName = userName;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -40,8 +40,12 @@
             <div class="col col-12">
                 <form action="#" method="get">
                     <div class="input-field">
-                        <input name="q" type="search" placeholder="Type name here..." required="required" autocomplete="off" />
-                        <i class="material-icons">search</i>
+                        <select name="q">
+                            <option th:each="categorie : ${kategorie}"
+                                    th:value="${categorie.name}" class="dropdown-item"><a th:text="${categorie.name}" /></option>
+                        </select>
+                        <input class="btn btn-warning" type="submit" value="Pokaż wybraną kategorie">
+                        <!--<input name="q" type="search" placeholder="Type name here..." required="required" autocomplete="off" />-->
                     </div>
                 </form>
             </div>

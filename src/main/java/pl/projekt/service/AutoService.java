@@ -13,7 +13,6 @@ public interface AutoService {
     void toggleObserwowane(Auto auto);
     List<Auto> findObserwowane();
     List<Auto>findAutoInObserwowane(String name);
-    List<Auto> findSport(Long q);
-    List<Auto> findNormal(Long q);
+    List<Auto> findAutaInCategory(String q);
     void updateAuto(Auto auto);
 }

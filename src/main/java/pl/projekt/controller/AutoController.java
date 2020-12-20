@@ -47,26 +47,37 @@ public class AutoController {
 
     @GetMapping("/auto/{name}")
     public String details(Model model, @PathVariable String name, @RequestParam(required = false) Long q){
-        if (q == null){
-            model.addAttribute("auto", autoService.findAutoByName(name));
-        }
-        else{
-            model.addAttribute("auto", autoService.findAutoByName(name));
+        Auto auto = autoService.findAutoByName(name);
+        model.addAttribute("auto", auto);
+        if (q != null){
             model.addAttribute("comments", commentService.getCommentsById(q));
         }
+        Comment comment = new Comment();
+        model.addAttribute("comment", comment);
+
+
+
 
         return "auto-details";
+    }
+
+    @PostMapping("/auto/{name}/createComment")
+    public String addComment(@ModelAttribute Comment comment, @PathVariable String name) {
+        Auto auto = autoService.findAutoByName(name);
+        comment.setAutoId(auto.getId());
+        commentService.createComment(comment);
+        return "redirect:/auto/{name}";
+    }
+
+    @GetMapping("/auto/{name}/deleteComment")
+    public String deleteComment(@RequestParam(required = false) Long q) {
+        commentService.deleteComment(q);
+        return "redirect:/auto/{name}";
     }
 
     @PostMapping("/auto/{name}")
     public String changeTag(@ModelAttribute Auto auto) {
         autoService.updateAuto(auto);
-        return "redirect:/auto/{name}";
-    }
-
-    @PostMapping("/auto/{name}/createComment")
-    public String addComment(@ModelAttribute Comment comment) {
-        commentService.createComment(comment);
         return "redirect:/auto/{name}";
     }
 
@@ -95,18 +106,15 @@ public class AutoController {
     }
 
     @GetMapping("/kategorie")
-    public String getCategories(Model model, @RequestParam(required = false) Long q){
+    public String getCategories(Model model, @RequestParam(required = false) String q){
         if ( q == null){
             model.addAttribute("kategorie", categoryService.findCategories());
         }
-        else if(q == 1){
+        else if(q != null){
             model.addAttribute("kategorie", categoryService.findCategories());
-            model.addAttribute("auta", autoService.findSport(q));
+            model.addAttribute("auta", autoService.findAutaInCategory(q));
         }
-        else if(q == 2){
-            model.addAttribute("kategorie", categoryService.findCategories());
-            model.addAttribute("auta", autoService.findNormal(q));
-        }
+
 
         return "kategorie";
     }

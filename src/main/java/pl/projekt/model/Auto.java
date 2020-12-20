@@ -85,8 +85,13 @@ public class Auto {
         this.rocznik = rocznik;
     }
 
-    public boolean isCzyUzywany() {
-        return czyUzywany;
+    public String isCzyUzywany() {
+        if(czyUzywany==true){
+            return "Używany";
+        }
+        else{
+            return "Nowy";
+        }
     }
 
     public void setCzyUzywany(boolean czyUzywany) {

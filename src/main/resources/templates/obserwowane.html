@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -42,7 +42,7 @@
                 <form action="#" method="get">
                     <div class="input-field">
                         <input name="q" type="search" placeholder="Type name here..." required="required" autocomplete="off" />
-                        <i class="material-icons">search</i>
+
                     </div>
                 </form>
             </div>
@@ -59,7 +59,7 @@
                         <p class= "autka-info-but" th:text="'Rodzaj paliwa: ' + ${auto.rodzajPaliwa}"></p>
                     </div>
                     <img class="wszystko-img" th:src="${auto.getUrl()}">
-                    <a th:href="${auto.getDetailsUrl() + '/obserwowane'}" th:class="(${auto.czyObserwowany} ? 'un' : '') + 'mark favorite'"></a>
+                    <a th:href="${auto.getDetailsUrl() + '/obserwowane'}" th:class="(${auto.czyObserwowany} ? 'un' : '') + 'mark favorite'">💛</a>
                 </div>
 
             </div>

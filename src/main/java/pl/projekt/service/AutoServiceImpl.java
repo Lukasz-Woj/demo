@@ -8,6 +8,7 @@ import pl.projekt.repository.AutoDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,22 +71,27 @@ public class AutoServiceImpl implements AutoService{
     }
 
     @Override
-    public List<Auto> findSport(Long q) {
-        return getAllAuta().stream().filter(auto -> auto.getCategory() == q).collect(Collectors.toList());
+    public List<Auto> findAutaInCategory(String q) {
+        List<Auto> lista = new ArrayList<>();
+        if (q.equals("Sportowe")){
+            Long a = 1l;
+            lista = getAllAuta().stream().filter(auto -> auto.getCategory() == a).collect(Collectors.toList());
+        }
+        if (q.equals("Zwykłe")){
+            Long a = 2l;
+            lista =  getAllAuta().stream().filter(auto -> auto.getCategory() == a).collect(Collectors.toList());
+        }
+        return lista;
     }
 
-    @Override
-    public List<Auto> findNormal(Long q) {
-        return getAllAuta().stream().filter(auto -> auto.getCategory() == q).collect(Collectors.toList());
-    }
 
+    //return getAllAuta().stream().filter(auto -> auto.getCategory() == a).collect(Collectors.toList());
     @Override
     public void updateAuto(Auto auto) {
         auto.setCzyObserwowany(null);
 
         autoDao.updateAuto(auto);
     }
-
 
     private void createAuta(){
         auta = new ArrayList<>();
@@ -96,10 +102,12 @@ public class AutoServiceImpl implements AutoService{
         auta.add(new Auto(1l,"a4", "audi", "1.4", "benzyna", "90 000", 1998, true, 20000, "",false,1l));
         auta.add(new Auto(1l,"a5", "audi", "1.4", "benzyna", "90 000", 1998, true, 20000, "",false,1l));
     }
+
     private void createOfertaDnia(){
         oferAuto = new ArrayList<>();
         oferAuto.add(new Auto(1l,"a6", "audi", "1.4", "benzyna", "90 000", 1998, true, 20000, "",false,1l));
     }
+
     /*private void createAllAuta(){
         allAuta = new ArrayList<>();
         allAuta.add(new Auto("6", "Mazda", "2.2", "Diesel", "95 000", 2015, true, 23500,"",false));

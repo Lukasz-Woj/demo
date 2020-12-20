@@ -77,24 +77,13 @@ body{
     transform: translateX(0);
 }
 
-.favorite {
-    position: absolute;
-    top: 0;
-    right: 0.75rem;
-    display: block;
-    height: 60px;
-    width: 60px;
-    z-index: 1500;
-    border-radius: 0 6px 0 0;
-    right: 0;
-}
 
 .mark.favorite {
-    background: url(/static/ikony/1.png) no-repeat 0 0;
-    /*background-color: red;*/
+    /*background: url(/static/ikony/1.png) no-repeat 0 0;*/
+    background-color: white;
 }
 
 .unmark.favorite {
-    background: url(/static/ikony/2.png) no-repeat 0 0;
-    /*background-color: aqua;*/
+    /*background: url(/static/ikony/2.png) no-repeat 0 0;*/
+    background-color: red;
 }
